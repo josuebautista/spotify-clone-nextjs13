@@ -1,10 +1,11 @@
-import { forwardRef } from 'react';
+import { ButtonHTMLAttributes, forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 }
 
+// eslint-disable-next-line react/display-name
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
   className, children, disabled, type = 'button', ...props
 }, ref) => {
