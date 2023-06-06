@@ -5,6 +5,7 @@ import { Song } from '@/types';
 import Image from 'next/image';
 import { FC } from 'react';
 import liked from '@/public/images/liked.png';
+import usePlayer from '@/hooks/usePlayer';
 
 interface MediaItemProps {
   onClick?: (id: string) => void
@@ -12,11 +13,13 @@ interface MediaItemProps {
 }
 
 const MediaItem: FC<MediaItemProps> = ({ item, onClick }) => {
+  const player = usePlayer();
   const imageUrl = useLoadImage(item);
   const handleClick = () => {
     if (onClick) {
       return onClick(item.id)
     }
+    return player.setId(item.id)
   }
   return (
     <div onClick={() => handleClick()} className='flex items-center gap-x-3 cursor-pointer hover:bg-neutral-800/50 w-full p-2 rounded-md'>
